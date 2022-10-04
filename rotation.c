@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:12:18 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 15:13:04 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:22:22 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 void	paint_window(t_data *d)
 {

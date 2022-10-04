@@ -6,20 +6,20 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:54:41 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 11:54:33 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 21:03:10 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
 # include <fcntl.h>
-# include <stdbool.h>
 # include <math.h>
-# include "minilibx_opengnl/mlx.h"
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include "minilibx_opengl/mlx.h"
 
 # define WINDOW_W		800
 # define WINDOW_H		600
@@ -99,21 +99,17 @@ int		ft_isdigit(int c);
 bool	ft_isspace(char ch);
 int		ft_strlen(const char *str);
 void	ft_putstr_fd(char *s, int fd);
-int		get_next_line(char **line, int fd);
-char	*ft_strjoin(char *s1, char *s2, int n);
+int		gnl(char **line, int fd);
 char	*ft_strtrim(char *s1, char *set, int flag, size_t i);
 char	*ft_strchr(const char *s, int c);
 int		ft_atoi(const char *str, int i, int flag, int m);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_error(char *str);
 void	ft_perror(char *str);
-void	init_data(t_data *d);
 void	parse(char **argv, t_data *d);
-int		parse_line(char *line, t_data *d, int fd, int i);
 int		get_x_y(char *str, t_data *d, int fd);
 void	get_map(t_data *d, char *filename);
 void	check_data(t_data *d);
-void	check_map(t_data *d);
 void	check_walls(t_data *d, size_t x, size_t y);
 void	check_forbidden_char(t_data *d, size_t x, size_t y);
 void	check_space(t_data *d, size_t x, size_t y);
@@ -132,11 +128,9 @@ void	paint_window(t_data *d);
 void	draw_minimap(t_data d);
 double	add_angle(double angle, double add);
 t_ray	ray_cast(t_data d, double angle);
-void	all_rays(t_data d);
 void	wall(t_data data, t_ray ray, int x);
 void	draw_vertical(t_data data, int x, int width, int height);
 void	image_pixel_put(t_data data, int x, int y, unsigned int color);
-void	ft_free(char **str);
 void	error_free(char *str, t_data *d);
 void	all_free(t_data *d);
 void	game_end(t_data *d);

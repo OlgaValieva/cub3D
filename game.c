@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:51:32 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 11:50:37 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:21:54 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 void start_game(t_game *game)
 {

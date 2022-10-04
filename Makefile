@@ -6,7 +6,7 @@
 #    By: carys <carys@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 10:42:54 by carys             #+#    #+#              #
-#    Updated: 2022/10/04 15:27:10 by carys            ###   ########.fr        #
+#    Updated: 2022/10/04 20:24:48 by carys            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,9 @@ NAME	=	cub3d
 
 HEADER	=	cub3d.h
 
-SRCS	=	src/main.c src/move.c src/minimap.c\				
-			src/hook.c src/check_map.c src/free.c\		
-			src/rotation.c src/ray_cast.c src/draw.c\			
-			src/paint.c src/parsing.c src/parsing_utils.c\				
-			src/utils_one.c src/utils_two.c
-
+SRCS	=	main.c move.c minimap.c hook.c check_map.c free.c rotation.c ray_cast.c draw.c\
+			parsing.c parsing_utils.c make utils_one.c utils_two.c
+			
 OBJS	=	${SRCS:%.c=%.o}
 
 CC		=	gcc
@@ -41,9 +38,8 @@ all:		${NAME}
 
 %.o: 		%.c ${HEADER}
 			${CC} ${CFLAGS} -c $< -o $@
-			@echo "---Compiled "$<" success!---"
 
-${NAME}:	${OBJS_A} ${HEADER}
+${NAME}:	${OBJS} ${HEADER}
 			${CC} ${CFLAGS} ${MLX_FLAGS} -o ${NAME} ${OBJS}
 			@printf "${CLR}${BGN}${RST}\n"
 

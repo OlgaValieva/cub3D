@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:10:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 15:10:38 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:46:04 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 t_texture	parse_texture(char *line)
 {
@@ -70,7 +70,7 @@ int	parse_color(char *line)
 	return (color);
 }
 
-int	parse_line(char *line, t_data *data, int fd, int i)
+static int	parse_line(char *line, t_data *data, int fd, int i)
 {
 	while (ft_isspace(line[i]))
 		i++;
@@ -105,7 +105,7 @@ void	parse(char **argv, t_data *d)
 	fd_open = open(argv[1], O_RDWR);
 	if (fd_open == -1)
 		ft_perror("File open error");
-	while (get_next_line(&line, fd_open) && parse_line(line, d, fd_open, 0))
+	while (gnl(&line, fd_open) && parse_line(line, d, fd_open, 0))
 		free(line);
 	close(fd_open);
 	get_map(d, argv[1]);

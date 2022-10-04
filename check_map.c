@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:56:43 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 14:57:37 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:21:38 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 void	check_vertical(t_data *d, int y)
 {

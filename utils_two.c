@@ -6,13 +6,13 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:16:33 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 11:42:03 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:41:08 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
-char	*ft_strjoin(char *s1, char *s2, int n)
+static char	*ft_strjoin(char *s1, char *s2, int n)
 {
 	char	*str;
 	size_t	len1;
@@ -35,17 +35,17 @@ char	*ft_strjoin(char *s1, char *s2, int n)
 	while (s2[i])
 		str[j++] = s2[i++];
 	str[j] = '\0';
-    if(n == 0)
-        free(s1);
+	if (n == 0)
+		free(s1);
 	return (str);
 }
 
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
-
-    if (!s)
-        return(0);
+	
+	if (!s)
+		return(0);
 	len = 0;
 	while (s[len])
 	{
@@ -83,9 +83,9 @@ char	*ft_strtrim(char *s1, char *set, int flag, size_t i)
 	return (dst);
 }
 
-int ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-    size_t	i;
+	size_t	i;
 
 	i = -1;
 	if (!s1 && !s2)
@@ -100,10 +100,10 @@ int ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int ft_gnl(char **line, int fd)
+int	ft_gnl(char **line, int fd)
 {
-    int bytes_buf;
-    char    buffer[2];
+    int		bytes_buf;
+    char	buffer[2];
 
     bytes_buf = 0;
     *line = malloc(1);
@@ -113,10 +113,10 @@ int ft_gnl(char **line, int fd)
     buffer[1] = '\0';
     while ((read(fd, buffer, 1)) > 0)
     {
-        bytes_buf = 1;
-        if(buffer[0] == '\n')
+		bytes_buf = 1;
+        if (buffer[0] == '\n')
             break ;
         *line = ft_strjoin((*line), buffer, 0);
     }
-    return (bytes_buf);
+	return (bytes_buf);
 }

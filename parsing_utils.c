@@ -6,12 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 15:04:42 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:35:11 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "..cub3d.h"
+#include "cub3d.h"
 
 void	image_pixel_put(t_data d, int x, int y, unsigned int color)
 {
@@ -62,7 +61,7 @@ int	get_x_y(char *str, t_data *d, int fd)
 
 	newline = 0;
 	check_newline(str, d, &newline);
-	while (get_next_line(&str, fd))
+	while (gnl(&str, fd))
 		check_newline(str, d, &newline);
 	check_newline(str, d, &newline);
 	return (0);
@@ -80,13 +79,13 @@ void	get_map(t_data *d, char *filename)
 	d->map = (char **)malloc(sizeof(char *) * (d->size_y + 1));
 	if (!d->map)
 		ft_error("Error: unable to allocate memory!\n");
-	while (get_next_line(&d->map[i], fd) && d->skip > 0)
+	while (gnl(&d->map[i], fd) && d->skip > 0)
 	{
 		d->skip--;
 		free(d->map[i]);
 	}
 	i++;
-	while (get_next_line(&d->map[i], fd) && i < d->size_y - 1)
+	while (gnl(&d->map[i], fd) && i < d->size_y - 1)
 		i++;
 	d->map[++i] = NULL;
 	close(fd);

@@ -6,13 +6,13 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:30:58 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 13:06:26 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:55:08 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
-void	all_rays(t_data d)
+static void	all_rays(t_data d)
 {
 	t_ray	ray;
 	int		ray_number;
@@ -40,7 +40,7 @@ void	all_rays(t_data d)
 	}
 }
 
-void	init_data(t_data *d)
+static void	init_data(t_data *d)
 {
 	d->skip = 0;
 	d->f_color = -1;
@@ -60,7 +60,7 @@ void	init_data(t_data *d)
 	d->img = NULL;
 }
 
-void	check_map(t_data *d)
+static void	check_map(t_data *d)
 {
 	check_walls(d, 0, 0);
 	check_forbidden_char(d, 0, 0);

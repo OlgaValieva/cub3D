@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:11:16 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 15:11:44 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:22:18 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 t_coord	make_coord(t_data d)
 {

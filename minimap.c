@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:05:44 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 15:07:48 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:22:03 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 void	draw(t_data d, t_coord pos_i, unsigned int unit,
 			unsigned int color)
@@ -81,5 +81,3 @@ void	ft_error(char *str)
 		ft_putstr_fd(str, 2);
 	exit(1);
 }
-
-

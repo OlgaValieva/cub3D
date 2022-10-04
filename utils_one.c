@@ -6,38 +6,38 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:12:28 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 11:40:16 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 21:02:13 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int i, int flag, int m)
 {
 	long int	n;
-	long int	nn;
-	int			m;
-	int			i;
 
 	n = 0;
-	m = 1;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			m = -1;
 		i++;
 	}
-	while (ft_isdigit(str[i]))
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		nn = n;
-		n = n * 10 + (str[i++] - '0');
-		if ((nn < 0 && n > 0) || (nn > 0 && n < 0))
-			return ((m == 1) * (-1));
-	}	
-	return (n * m);
+		flag = 1;
+		n = n * 10 + m * (str[i] - 48);
+		i++;
+		if (m == 1 && n < 0 && i > 18)
+			return (-1);
+		else if (m == -1 && n > 0 && i > 19)
+			return (-1);
+	}
+	if (flag == -1)
+		return (-1);
+	return (n);
 }
 
 int	ft_isdigit(int c)
@@ -47,7 +47,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-bool    ft_isspace(char c)
+bool	ft_isspace(char c)
 {
 	if (c == 32 || (c >= 9 && c <= 13))
 		return (true);
@@ -56,11 +56,11 @@ bool    ft_isspace(char c)
 
 void	ft_putstr_fd(char *s, int fd)
 {
-    int i;
-
-    i = ft_strlen(s);
-    if(s)
-        write(fd, s, i);
+	int	i;
+	
+	i = ft_strlen(s);
+    if (s)
+		write(fd, s, i);
 }
 
 char	*ft_strchr(const char *s, int c)

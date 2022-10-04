@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 12:45:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 14:58:46 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:21:33 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 void	choose_text(t_texture *text, t_data d, t_ray ray)
 {

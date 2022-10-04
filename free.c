@@ -6,11 +6,11 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:13:39 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 15:14:25 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/04 21:00:19 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..cub3d.h"
+#include "cub3d.h"
 
 void	game_end(t_data *d)
 {
@@ -24,7 +24,7 @@ void	game_end(t_data *d)
 	exit(0);
 }
 
-void	ft_free(char **str)
+static void	ft_free(char **str)
 {
 	int	i;
 
