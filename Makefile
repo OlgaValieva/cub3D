@@ -6,7 +6,7 @@
 #    By: carys <carys@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 10:42:54 by carys             #+#    #+#              #
-#    Updated: 2022/10/04 20:24:48 by carys            ###   ########.fr        #
+#    Updated: 2022/10/05 10:11:36 by carys            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME	=	cub3d
 
 HEADER	=	cub3d.h
 
-SRCS	=	main.c move.c minimap.c hook.c check_map.c free.c rotation.c ray_cast.c draw.c\
-			parsing.c parsing_utils.c make utils_one.c utils_two.c
+SRCS	=	check_map.c draw.c free.c hook.c main.c minimap.c move.c\
+			ray_cast.c rotation.c parsing.c parsing_utils.c utils_one.c utils_two.c
 			
 OBJS	=	${SRCS:%.c=%.o}
 
@@ -23,8 +23,6 @@ CC		=	gcc
 
 RM		=	rm -f
 
-BGN		=	START
-END		=	FINISH
 CLR		=	\001\033[1;92m\002
 RST		=	\001\033[0m\002
 
@@ -41,16 +39,18 @@ all:		${NAME}
 
 ${NAME}:	${OBJS} ${HEADER}
 			${CC} ${CFLAGS} ${MLX_FLAGS} -o ${NAME} ${OBJS}
-			@printf "${CLR}${BGN}${RST}\n"
+			@printf "${CLR}"START" $(NAME)""${RST}\n"
 
 clean:
 			${RM} ${OBJS}
 
 fclean:		clean
 			${RM} ${NAME}
-			@printf "${CLR}${END}${RST}\n"
+			@printf "${CLR}"FINISH" $(NAME)""${RST}\n"
 
 re:			fclean all
+			@printf "${CLR}"REBOOT" $(NAME)""${RST}\n"
 
 norm:
+			@printf "${CLR}"NORMINETTE" $(NAME)""${RST}\n"
 			@norminette ${SRCS} ${HEADER}

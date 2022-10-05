@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:54:41 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 21:03:10 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/05 12:57:04 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,26 @@
 # include <unistd.h>
 # include "minilibx_opengl/mlx.h"
 
-# define WINDOW_W		800
-# define WINDOW_H		600
 # define FOV			60
-# define SPEED_ROTATION	2
-# define SPEED_MOVE		0.1
-# define WALL_DIST		0.25
 # define GFX_QUALITY    1.0
 # define MINIMAP_SIZE   0.3
+# define SPEED_MOVE		0.1
+# define SPEED_ROTATION	2
+# define WALL_DIST		0.25
+# define WINDOW_W		800
+# define WINDOW_H		600
+
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}	t_coord;
+
+typedef struct s_size
+{
+	size_t	x;
+	size_t	y;
+}	t_size;
 
 typedef struct s_ray
 {
@@ -50,12 +62,6 @@ typedef struct s_comp
 	double	ray_dir_y;
 }	t_comp;
 
-typedef struct s_coord
-{
-	int	x;
-	int	y;
-}	t_coord;
-
 typedef struct s_texture
 {
 	char	*filename;
@@ -68,17 +74,12 @@ typedef struct s_texture
 	void	*mlx_img_ptr;
 }	t_texture;
 
-typedef struct s_size
-{
-	size_t	x;
-	size_t	y;
-}	t_size;
-
 typedef struct s_data
 {
 	int			skip;
 	int			f_color;
 	int			c_color;
+	int			mouse;
 	t_texture	north_texture;
 	t_texture	south_texture;
 	t_texture	west_texture;
@@ -91,43 +92,42 @@ typedef struct s_data
 	char		**map;
 	void		*mlx;
 	void		*mlx_win;
-	int			mouse;
 	void		*img;
 }	t_data;
 
-int		ft_isdigit(int c);
+t_ray	ray_cast(t_data d, double angle);
 bool	ft_isspace(char ch);
-int		ft_strlen(const char *str);
-void	ft_putstr_fd(char *s, int fd);
-int		gnl(char **line, int fd);
+double	add_angle(double angle, double add);
+double	convert_to_rad(double angle);
 char	*ft_strtrim(char *s1, char *set, int flag, size_t i);
 char	*ft_strchr(const char *s, int c);
+int		ft_isdigit(int c);
+int		ft_strlen(const char *str);
+int		gnl(char **line, int fd);
 int		ft_atoi(const char *str, int i, int flag, int m);
 int		ft_strcmp(const char *s1, const char *s2);
+int		get_x_y(char *str, t_data *d, int fd);
+int		red_cross(t_data *d);
+int		keys(int key, t_data *d);
+int		mouse(int x, int y, t_data *d);
+void	ft_putstr_fd(char *s, int fd);
 void	ft_error(char *str);
 void	ft_perror(char *str);
 void	parse(char **argv, t_data *d);
-int		get_x_y(char *str, t_data *d, int fd);
 void	get_map(t_data *d, char *filename);
 void	check_data(t_data *d);
 void	check_walls(t_data *d, size_t x, size_t y);
 void	check_forbidden_char(t_data *d, size_t x, size_t y);
 void	check_space(t_data *d, size_t x, size_t y);
 void	images(t_data *d);
-int		red_cross(t_data *d);
-int		keys(int key, t_data *d);
 void	turn_left(t_data *d);
 void	turn_right(t_data *d);
-int		mouse(int x, int y, t_data *d);
 void	step_forward(t_data *d);
 void	step_back(t_data *d);
 void	step_left(t_data *d);
 void	step_right(t_data *d);
-double	convert_to_rad(double angle);
 void	paint_window(t_data *d);
 void	draw_minimap(t_data d);
-double	add_angle(double angle, double add);
-t_ray	ray_cast(t_data d, double angle);
 void	wall(t_data data, t_ray ray, int x);
 void	draw_vertical(t_data data, int x, int width, int height);
 void	image_pixel_put(t_data data, int x, int y, unsigned int color);

@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:16:33 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 20:41:08 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/05 12:29:35 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static char	*ft_strjoin(char *s1, char *s2, int n)
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
-	
+
 	if (!s)
-		return(0);
+		return (0);
 	len = 0;
 	while (s[len])
 	{
@@ -102,21 +102,21 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 int	ft_gnl(char **line, int fd)
 {
-    int		bytes_buf;
-    char	buffer[2];
+	int		bytes_buf;
+	char	buffer[2];
 
-    bytes_buf = 0;
-    *line = malloc(1);
-    if (!(*line))
-        return (-1);
-    (*line)[0] = '\0';
-    buffer[1] = '\0';
-    while ((read(fd, buffer, 1)) > 0)
-    {
+	bytes_buf = 0;
+	*line = malloc(1);
+	if (!(*line))
+		return (-1);
+	(*line)[0] = '\0';
+	buffer[1] = '\0';
+	while ((read(fd, buffer, 1)) > 0)
+	{
 		bytes_buf = 1;
-        if (buffer[0] == '\n')
-            break ;
-        *line = ft_strjoin((*line), buffer, 0);
-    }
+		if (buffer[0] == '\n')
+			break ;
+		*line = ft_strjoin((*line), buffer, 0);
+	}
 	return (bytes_buf);
 }

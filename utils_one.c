@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:12:28 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 21:02:13 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/05 12:26:02 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ bool	ft_isspace(char c)
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-	
+
 	i = ft_strlen(s);
-    if (s)
+	if (s)
 		write(fd, s, i);
 }
 
