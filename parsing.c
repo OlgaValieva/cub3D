@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:10:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 20:46:04 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 10:51:37 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_texture	parse_texture(char *line)
 	{
 		if (path)
 			free(path);
-		ft_error("Use filename extension \".xpm\" for texture!\n");
+		ft_error("Cub3d: use filename extension \".xpm\"\n");
 	}
 	texture.filename = path;
 	return (texture);
@@ -104,7 +104,7 @@ void	parse(char **argv, t_data *d)
 
 	fd_open = open(argv[1], O_RDWR);
 	if (fd_open == -1)
-		ft_perror("File open error");
+		ft_perror("Cub3d: file open error");
 	while (gnl(&line, fd_open) && parse_line(line, d, fd_open, 0))
 		free(line);
 	close(fd_open);

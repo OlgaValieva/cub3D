@@ -6,7 +6,7 @@
 #    By: carys <carys@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 10:42:54 by carys             #+#    #+#              #
-#    Updated: 2022/10/05 10:11:36 by carys            ###   ########.fr        #
+#    Updated: 2022/10/07 12:26:45 by carys            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS	=	check_map.c draw.c free.c hook.c main.c minimap.c move.c\
 			
 OBJS	=	${SRCS:%.c=%.o}
 
-CC		=	gcc
+CC		=	cc
 
 RM		=	rm -f
 
@@ -27,6 +27,7 @@ CLR		=	\001\033[1;92m\002
 RST		=	\001\033[0m\002
 
 CFLAGS	=	-Wall -Wextra -Werror -I${HEADER}
+#-I${HEADER}
 
 MLX_FLAGS =	-lmlx -framework OpenGL -framework AppKit
 
@@ -35,7 +36,7 @@ MLX_FLAGS =	-lmlx -framework OpenGL -framework AppKit
 all:		${NAME}
 
 %.o: 		%.c ${HEADER}
-			${CC} ${CFLAGS} -c $< -o $@
+			${CC} ${CFLAGS} -Imlx -c $< -o $@
 
 ${NAME}:	${OBJS} ${HEADER}
 			${CC} ${CFLAGS} ${MLX_FLAGS} -o ${NAME} ${OBJS}

@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:54:41 by carys             #+#    #+#             */
-/*   Updated: 2022/10/05 12:57:04 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 12:24:39 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "minilibx_opengl/mlx.h"
+# include "mlx/mlx.h"
 
 # define FOV			60
 # define GFX_QUALITY    1.0
@@ -102,7 +102,7 @@ double	convert_to_rad(double angle);
 char	*ft_strtrim(char *s1, char *set, int flag, size_t i);
 char	*ft_strchr(const char *s, int c);
 int		ft_isdigit(int c);
-int		ft_strlen(const char *str);
+size_t	ft_strlen(const char *str);
 int		gnl(char **line, int fd);
 int		ft_atoi(const char *str, int i, int flag, int m);
 int		ft_strcmp(const char *s1, const char *s2);

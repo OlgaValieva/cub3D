@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 20:35:11 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 11:00:07 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	get_map(t_data *d, char *filename)
 	i = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_perror("File open error");
+		ft_perror("Cub3d: file open error");
 	d->map = (char **)malloc(sizeof(char *) * (d->size_y + 1));
 	if (!d->map)
-		ft_error("Error: unable to allocate memory!\n");
+		ft_error("Cub3d: error: unable to allocate memory!\n");
 	while (gnl(&d->map[i], fd) && d->skip > 0)
 	{
 		d->skip--;
@@ -94,17 +94,17 @@ void	get_map(t_data *d, char *filename)
 void	check_data(t_data *d)
 {
 	if (!d->map)
-		error_free("Error: missing map!\n", d);
+		error_free("Cub3d: error: missing map!\n", d);
 	if (!d->north_texture.filename)
-		error_free("Error: missing north texture!\n", d);
+		error_free("Cub3d: error: missing north texture!\n", d);
 	if (!d->south_texture.filename)
-		error_free("Error: missing south texture!\n", d);
+		error_free("Cub3d: error: missing south texture!\n", d);
 	if (!d->west_texture.filename)
-		error_free("Error: missing west texture!\n", d);
+		error_free("Cub3d: error: missing west texture!\n", d);
 	if (!d->east_texture.filename)
-		error_free("Error: missing east texture!\n", d);
+		error_free("Cub3d: error: missing east texture!\n", d);
 	if (d->f_color == -1)
-		error_free("Error: missing floor color!\n", d);
+		error_free("Cub3d: error: missing floor color!\n", d);
 	if (d->c_color == -1)
-		error_free("Error: missing ceilling color!\n", d);
+		error_free("Cub3d: error: missing ceilling color!\n", d);
 }
