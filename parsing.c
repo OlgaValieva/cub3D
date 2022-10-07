@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:10:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 10:51:37 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 15:00:52 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_texture	parse_texture(char *line)
 	{
 		if (path)
 			free(path);
-		ft_error("Cub3d: use filename extension \".xpm\"\n");
+		ft_error("Cub3d: use filename extension \".xpm\"\n"); // разница ошибки в load_texture?
 	}
 	texture.filename = path;
 	return (texture);
@@ -41,10 +41,10 @@ int	check_number(char **str)
 	while (ft_isspace((*str)[i]))
 		(*str)++;
 	color = ft_atoi(*str, 0, -1, 1);
-	if (color == -1)
-		ft_error("Error on color line!\n");
+//	if (color == -1)    Почему отдельно рассматривать нужно
+//		ft_error("Error on color line!\n");
 	if (color < 0 || color > 255)
-		ft_error("Error: color out of rgb range!\n");
+		ft_error("cub3d: color out of RGB range\n");
 	while (ft_isdigit(**str))
 		(*str)++;
 	while (ft_isspace(**str))
@@ -104,8 +104,8 @@ void	parse(char **argv, t_data *d)
 
 	fd_open = open(argv[1], O_RDWR);
 	if (fd_open == -1)
-		ft_perror("Cub3d: file open error");
-	while (gnl(&line, fd_open) && parse_line(line, d, fd_open, 0))
+		ft_perror("cub3d: file open error");
+	while (ft_gnl(&line, fd_open) && parse_line(line, d, fd_open, 0))
 		free(line);
 	close(fd_open);
 	get_map(d, argv[1]);

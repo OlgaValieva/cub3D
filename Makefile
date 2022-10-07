@@ -6,7 +6,7 @@
 #    By: carys <carys@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 10:42:54 by carys             #+#    #+#              #
-#    Updated: 2022/10/07 12:26:45 by carys            ###   ########.fr        #
+#    Updated: 2022/10/07 14:50:31 by carys            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,8 @@ CLR		=	\001\033[1;92m\002
 RST		=	\001\033[0m\002
 
 CFLAGS	=	-Wall -Wextra -Werror -I${HEADER}
-#-I${HEADER}
 
-MLX_FLAGS =	-lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS =	-Lmlx -lmlx -framework OpenGL -framework AppKit
 
 .PHONY:		all clean fclean re
 

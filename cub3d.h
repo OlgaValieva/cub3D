@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:54:41 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 12:24:39 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 14:09:42 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define WALL_DIST		0.25
 # define WINDOW_W		800
 # define WINDOW_H		600
+# define COLOR "\001\033[1;92m\002"
 
 typedef struct s_coord
 {
@@ -103,7 +104,7 @@ char	*ft_strtrim(char *s1, char *set, int flag, size_t i);
 char	*ft_strchr(const char *s, int c);
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *str);
-int		gnl(char **line, int fd);
+int		ft_gnl(char **line, int fd);
 int		ft_atoi(const char *str, int i, int flag, int m);
 int		ft_strcmp(const char *s1, const char *s2);
 int		get_x_y(char *str, t_data *d, int fd);

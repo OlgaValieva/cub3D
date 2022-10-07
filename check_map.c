@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:56:43 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 11:08:05 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 14:36:01 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	check_vertical(t_data *d, int y)
 	while (ft_isspace(d->map[y][x]))
 		x++;
 	if (d->map[y][x] && d->map[y][x] != '1')
-		error_free("Cub3d: map is not surrounded by walls!\n", d);
+		error_free("cub3d: map is not surrounded by walls on the left\n", d);
 	while (d->map[y][x])
 		x++;
 	x--;
 	while (x > 0 && ft_isspace(d->map[y][x]))
 		x--;
 	if (d->map[y][x] && d->map[y][x] != '1')
-		error_free("Cub3d: map is not surrounded by walls!\n", d);
+		error_free("cub3d: map is not surrounded by wallson on the right\n", d);
 }
 
 void	check_walls(t_data *d, size_t x, size_t y)
@@ -43,7 +43,7 @@ void	check_walls(t_data *d, size_t x, size_t y)
 		{
 			if (d->map[0][x] && d->map[0][x] != '1'
 				&& !ft_isspace(d->map[0][x]))
-				error_free("Cub3d: map isn't surrounded by walls\n", d);
+				error_free("cub3d: isn't surrounded by walls from above\n", d);
 			x++;
 		}
 		len = ft_strlen(d->map[y]);
@@ -51,7 +51,7 @@ void	check_walls(t_data *d, size_t x, size_t y)
 		{
 			if (d->map[d->size_y - 1][x] && d->map[d->size_y - 1][x] != '1'
 				&& !ft_isspace(d->map[d->size_y - 1][x]))
-				error_free("Cub3d: map isn't surrounded by walls\n", d);
+				error_free("cub3d: isn't surrounded by walls from below\n", d);
 			x++;
 		}
 		y++;
@@ -85,8 +85,8 @@ void	check_forbidden_char(t_data *d, size_t x, size_t y)
 		len = ft_strlen(d->map[y]);
 		while (x < len)
 		{
-			if (!(ft_strchr("NSWE01 ", d->map[y][x])))
-				error_free("Cub3d: forbidden character is used!\n", d);
+//			if (!(ft_strchr("NSWE01 ", d->map[y][x])))  с этим условим карта выдает ошибку
+//				error_free("ub3d: forbidden character is used!\n", d); 
 			if (ft_strchr("NSWE", d->map[y][x]))
 			{
 				save_player_data(d, d->map[y][x], x, y);
@@ -97,7 +97,7 @@ void	check_forbidden_char(t_data *d, size_t x, size_t y)
 		y++;
 	}
 	if (player != 1)
-		error_free("Cub3d: wrong count of players!\n", d);
+		error_free("cub3d: wrong count of players\n", d);
 }
 
 void	check_space(t_data *d, size_t x, size_t y)
@@ -112,15 +112,19 @@ void	check_space(t_data *d, size_t x, size_t y)
 		{
 			if ((d->map[y][x]) != '1' && !ft_isspace(d->map[y][x]))
 			{
-				if (x - 1 >= 0 && ft_isspace(d->map[y][x - 1]))
-					error_free("Error:space isn't surrounded by walls\n", d);
-				if (x + 1 < (size_t)ft_strlen(d->map[y])
+				if ((x - 1 >= 0 && ft_isspace(d->map[y][x - 1]))
+				|| (x + 1 < (size_t)ft_strlen(d->map[y])
 					&& ft_isspace(d->map[y][x + 1]))
-					error_free("Error:space isn't surrounded by walls\n", d);
-				if (y - 1 >= 0 && ft_isspace(d->map[y - 1][x]))
-					error_free("Error:space isn't surrounded by walls\n", d);
-				if (y + 1 < d->size_y && ft_isspace(d->map[y + 1][x]))
-					error_free("Error:space isn't surrounded by walls\n", d);
+					|| (y + 1 < d->size_y && ft_isspace(d->map[y + 1][x]))
+					|| (y - 1 >= 0 && ft_isspace(d->map[y - 1][x])))
+					error_free("cub3d: space isn't surrounded by walls\n", d);
+	//			if (x + 1 < (size_t)ft_strlen(d->map[y])   можно убрать
+	//				&& ft_isspace(d->map[y][x + 1]))
+	//				error_free("cub3d: space isn't surrounded by walls\n", d);
+	//			if (y - 1 >= 0 && ft_isspace(d->map[y - 1][x]))
+	//				error_free("Error3:space isn't surrounded by walls\n", d);
+	//			if (y + 1 < d->size_y && ft_isspace(d->map[y + 1][x]))
+	//				error_free("Error4:space isn't surrounded by walls\n", d);
 			}
 			x++;
 		}

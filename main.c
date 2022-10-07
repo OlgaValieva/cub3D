@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:30:58 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 10:43:59 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 14:44:25 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ int	main(int argc, char **argv)
 	int		len;
 
 	if (argc != 2)
-		ft_error("Cub3d: wrong count of arguments\n");
+		ft_error("cub3d: wrong count of arguments\n");
 	len = ft_strlen(argv[1]);
 	if (len < 5 || ft_strcmp(argv[1] + len - 4, ".cub"))
-		ft_error("Cub3d: use filename extension \".cub\"\n");
+		ft_error("cub3d: use filename extension \".cub\"\n");
 	init_data(&d);
 	parse(argv, &d);
 	check_map(&d);

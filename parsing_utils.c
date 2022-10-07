@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 11:00:07 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/07 14:48:50 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	get_x_y(char *str, t_data *d, int fd)
 
 	newline = 0;
 	check_newline(str, d, &newline);
-	while (gnl(&str, fd))
+	while (ft_gnl(&str, fd))
 		check_newline(str, d, &newline);
 	check_newline(str, d, &newline);
 	return (0);
@@ -75,17 +75,17 @@ void	get_map(t_data *d, char *filename)
 	i = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_perror("Cub3d: file open error");
+		ft_perror("Cub3d: file open error      ");
 	d->map = (char **)malloc(sizeof(char *) * (d->size_y + 1));
 	if (!d->map)
 		ft_error("Cub3d: error: unable to allocate memory!\n");
-	while (gnl(&d->map[i], fd) && d->skip > 0)
+	while (ft_gnl(&d->map[i], fd) && d->skip > 0)
 	{
 		d->skip--;
 		free(d->map[i]);
 	}
 	i++;
-	while (gnl(&d->map[i], fd) && i < d->size_y - 1)
+	while (ft_gnl(&d->map[i], fd) && i < d->size_y - 1)
 		i++;
 	d->map[++i] = NULL;
 	close(fd);
