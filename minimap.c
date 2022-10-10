@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:05:44 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 20:22:03 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/10 12:30:43 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	draw(t_data d, t_coord pos_i, unsigned int unit,
 void	draw_mini_wall(t_data d, t_coord pos_i, unsigned int unit)
 {
 	if (d.map[pos_i.y][pos_i.x] == '1')
-		draw(d, pos_i, unit, 0xF48395A);
+		draw(d, pos_i, unit, 0xF8B4513);
 	else if (d.map[pos_i.y][pos_i.x] == '0')
-		draw(d, pos_i, unit, 0xFA9A9A9);
+		draw(d, pos_i, unit, 0xFBC8F8F);
 }
 
 void	draw_minimap(t_data d)
@@ -66,7 +66,7 @@ void	draw_minimap(t_data d)
 	}
 	player.x = d.player_x;
 	player.y = d.player_y;
-	draw(d, player, unit, 0xFDA70D6);
+	draw(d, player, unit, 0xF800000);
 }
 
 void	ft_perror(char *str)

@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:01:00 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 14:42:07 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/10 12:51:14 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	red_cross(t_data *d)
 {
-	printf(COLOR"🌈 Game over!\n");
+	printf(COLOR"🌈 Don't worry, try again\n");
 	game_end(d);
 	return (0);
 }
@@ -53,7 +53,7 @@ t_texture	load_texture(void *mlx, char *filename, t_data *d)
 	if (!texture.mlx_img_ptr)
 	{
 		ft_putstr_fd(texture.filename, 2);
-		ft_putstr_fd(" : ", 2);
+		ft_putstr_fd(": ", 2);
 		error_free("reading xpm file from cub3d failed\n", d);
 	}
 	texture.data = (int *)mlx_get_data_addr(texture.mlx_img_ptr,

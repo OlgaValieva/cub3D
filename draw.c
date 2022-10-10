@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 12:45:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 20:21:33 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/10 13:47:57 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned int	color(t_texture texture, t_ray ray, int tex_pos)
 	tex_coord.y = tex_pos & (texture.height - 1);
 	color = texture.data[texture.width * tex_coord.y + tex_coord.x];
 	if (ray.side == 'W' || ray.side == 'E')
-		color = (color >> 1) & 8355711;
+		color = (color >> 1) & 8355711;// что за цифры
 	return (color);
 }
 

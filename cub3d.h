@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:54:41 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 14:09:42 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/10 12:17:38 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 
 # define FOV			60
 # define GFX_QUALITY    1.0
-# define MINIMAP_SIZE   0.3
+# define MINIMAP_SIZE   0.2
 # define SPEED_MOVE		0.1
 # define SPEED_ROTATION	2
 # define WALL_DIST		0.25
-# define WINDOW_W		800
-# define WINDOW_H		600
+# define WINDOW_W		1000
+# define WINDOW_H		800
 # define COLOR "\001\033[1;92m\002"
 
 typedef struct s_coord
@@ -97,13 +97,13 @@ typedef struct s_data
 }	t_data;
 
 t_ray	ray_cast(t_data d, double angle);
+size_t	ft_strlen(const char *str);
 bool	ft_isspace(char ch);
 double	add_angle(double angle, double add);
 double	convert_to_rad(double angle);
 char	*ft_strtrim(char *s1, char *set, int flag, size_t i);
 char	*ft_strchr(const char *s, int c);
 int		ft_isdigit(int c);
-size_t	ft_strlen(const char *str);
 int		ft_gnl(char **line, int fd);
 int		ft_atoi(const char *str, int i, int flag, int m);
 int		ft_strcmp(const char *s1, const char *s2);

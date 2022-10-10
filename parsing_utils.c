@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 14:48:50 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/10 12:48:28 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_newline(char *str, t_data *d, int *newline)
 		if ((*newline) == 1)
 		{
 			free(str);
-			ft_error("Error!\n");
+			ft_error("cub3d: empty line\n");
 		}
 		else
 		{
@@ -75,10 +75,10 @@ void	get_map(t_data *d, char *filename)
 	i = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_perror("Cub3d: file open error      ");
+		ft_perror("Cub3d: file open error      "); // check
 	d->map = (char **)malloc(sizeof(char *) * (d->size_y + 1));
 	if (!d->map)
-		ft_error("Cub3d: error: unable to allocate memory!\n");
+		ft_error("Cub3d: error: unable to allocate memory!\n"); // check
 	while (ft_gnl(&d->map[i], fd) && d->skip > 0)
 	{
 		d->skip--;
@@ -94,17 +94,17 @@ void	get_map(t_data *d, char *filename)
 void	check_data(t_data *d)
 {
 	if (!d->map)
-		error_free("Cub3d: error: missing map!\n", d);
+		error_free("Cub3d: error: missing map!\n", d); // check
 	if (!d->north_texture.filename)
-		error_free("Cub3d: error: missing north texture!\n", d);
+		error_free("cub3d: error: missing north texture!\n", d);
 	if (!d->south_texture.filename)
-		error_free("Cub3d: error: missing south texture!\n", d);
+		error_free("cub3d: error: missing south texture!\n", d);
 	if (!d->west_texture.filename)
-		error_free("Cub3d: error: missing west texture!\n", d);
+		error_free("cub3d: error: missing west texture!\n", d);
 	if (!d->east_texture.filename)
-		error_free("Cub3d: error: missing east texture!\n", d);
+		error_free("cub3d: error: missing east texture!\n", d);
 	if (d->f_color == -1)
-		error_free("Cub3d: error: missing floor color!\n", d);
+		error_free("cub3d: error: missing floor color!\n", d);
 	if (d->c_color == -1)
-		error_free("Cub3d: error: missing ceilling color!\n", d);
+		error_free("cub3d: error: missing ceilling color!\n", d);
 }

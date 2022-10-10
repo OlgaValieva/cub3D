@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:10:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 15:00:52 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/10 13:49:17 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_texture	parse_texture(char *line)
 	{
 		if (path)
 			free(path);
-		ft_error("Cub3d: use filename extension \".xpm\"\n"); // разница ошибки в load_texture?
+		ft_error("use filename extension \".xpm\"\n");// разница в load_texture?
 	}
 	texture.filename = path;
 	return (texture);
