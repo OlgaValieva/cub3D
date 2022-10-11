@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:01:00 by carys             #+#    #+#             */
-/*   Updated: 2022/10/10 12:51:14 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/11 10:00:57 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ int	keys(int key, t_data *d)
 	else if (key == 124)
 		turn_right(d);
 	else if (key == 53)
+	{
+		printf(COLOR"ESC\n");
 		red_cross(d);
+	}
+		
 	return (0);
 }
 
@@ -68,5 +72,5 @@ void	images(t_data *d)
 	d->west_texture = load_texture(d->mlx, d->west_texture.filename, d);
 	d->south_texture = load_texture(d->mlx, d->south_texture.filename, d);
 	d->east_texture = load_texture(d->mlx, d->east_texture.filename, d);
-	d->mlx_win = mlx_new_window(d->mlx, WINDOW_W, WINDOW_H, "CUB3D");
+	d->mlx_win = mlx_new_window(d->mlx, WINDOW_W, WINDOW_H, "Cub3d;)");
 }

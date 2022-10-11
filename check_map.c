@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:56:43 by carys             #+#    #+#             */
-/*   Updated: 2022/10/10 15:11:47 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/11 09:48:06 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	check_forbidden_char(t_data *d, size_t x, size_t y)
 		len = ft_strlen(d->map[y]);
 		while (x < len)
 		{
-	//		if (!(ft_strchr("NSWE01 ", d->map[y][x])))
-	//			error_free("cub3d: forbidden character is used!\n", d);
+			if (!(ft_strchr("NSWE01 ", d->map[y][x])))
+				error_free("cub3d: forbidden character is used!\n", d);
 			if (ft_strchr("NSWE", d->map[y][x]))
 			{
 				save_player_data(d, d->map[y][x], x, y);
