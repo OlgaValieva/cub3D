@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:10:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/10 13:49:17 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 15:31:37 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_texture	parse_texture(char *line)
 	{
 		if (path)
 			free(path);
-		ft_error("use filename extension \".xpm\"\n");// разница в load_texture?
+		ft_error("use filename extension \".xpm\"\n");
 	}
 	texture.filename = path;
 	return (texture);
@@ -33,16 +33,14 @@ t_texture	parse_texture(char *line)
 int	check_number(char **str)
 {
 	int	color;
-	int	i;
 
-	i = 0;
 	if (!(*str))
 		return (-1);
-	while (ft_isspace((*str)[i]))
+	while (ft_isspace(**str))
 		(*str)++;
 	color = ft_atoi(*str, 0, -1, 1);
-//	if (color == -1)    Почему отдельно рассматривать нужно
-//		ft_error("Error on color line!\n");
+	if (color == -1)
+		ft_error("Error on color line!\n");
 	if (color < 0 || color > 255)
 		ft_error("cub3d: color out of RGB range\n");
 	while (ft_isdigit(**str))

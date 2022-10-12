@@ -6,7 +6,7 @@
         "version": "0.2.0",
         "configurations": [
             {
-                "name": "Launch cub3d ",
+                "name": "Launch cub3d list",
                 "type": "lldb",
                 "request": "launch",
                 "program": "${workspaceFolder}/cub3d",
@@ -19,11 +19,11 @@
                 "MIMode": "lldb"
             },
             {
-                "name": "Debug cub3d ",
+                "name": "Debug cub3d minimalist.cub",
                 "type": "lldb",
                 "request": "launch",
                 "program": "${workspaceFolder}/cub3d",
-                "args": [],
+                "args": ["./maps/minimalist.cub"],
                 "stopAtEntry": true,
                 "cwd": "${workspaceFolder}",
     //			"cwd": "${fileDirname}",
@@ -31,11 +31,11 @@
                 "MIMode": "lldb"
             },
             {
-                "name": "Debug cub3d",
+                "name": "Debug cub3d no_map",
                 "type": "lldb",
                 "request": "launch",
                 "program": "${workspaceFolder}/cub3d",
-                "args": [""],
+                "args": ["./maps/no_map.cub"],
                 "stopAtEntry": true,
                 "cwd": "${workspaceFolder}",
     //			"cwd": "${fileDirname}",

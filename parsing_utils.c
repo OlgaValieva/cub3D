@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 11:41:32 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 16:13:33 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	image_pixel_put(t_data d, int x, int y, unsigned int color)
 	img_addr[y * WINDOW_W + x] = color;
 }
 
+/*
+Проверка на новую/пустую строку в середине карты
+взводится флаг *newline для новой строки
+Определяем размеры карты d->size_x и d->size_y
+*/
 void	check_newline(char *str, t_data *d, int *newline)
 {
 	int	i;
@@ -55,6 +60,10 @@ void	check_newline(char *str, t_data *d, int *newline)
 	free(str);
 }
 
+/*
+Считаем, что считанная строка относится к карте.
+Определяем размеры карты d->size_x и d->size_y
+*/
 int	get_x_y(char *str, t_data *d, int fd)
 {
 	int	newline;
@@ -72,13 +81,15 @@ void	get_map(t_data *d, char *filename)
 	int		fd;
 	size_t	i;
 
-	i = 0;
+	if (d->size_y == 0)
+		return ;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_perror("Cub3d: file open error      "); // check
+		ft_perror("Cub3d: file open error      ");
 	d->map = (char **)malloc(sizeof(char *) * (d->size_y + 1));
 	if (!d->map)
-		ft_error("Cub3d: error: unable to allocate memory!\n"); // check
+		ft_error("Cub3d: error: unable to allocate memory!\n");
+	i = 0;
 	while (ft_gnl(&d->map[i], fd) && d->skip > 0)
 	{
 		d->skip--;
@@ -94,7 +105,7 @@ void	get_map(t_data *d, char *filename)
 void	check_data(t_data *d)
 {
 	if (!d->map)
-		error_free("Cub3d: missing map!\n", d); // check
+		error_free("Cub3d: missing map!\n", d);
 	if (!d->north_texture.filename)
 		error_free("cub3d: missing north texture\n", d);
 	if (!d->south_texture.filename)

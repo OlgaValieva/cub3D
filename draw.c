@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 12:45:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 13:15:19 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 13:55:29 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ unsigned int	color(t_texture texture, t_ray ray, int tex_pos)
 	tex_coord.y = tex_pos & (texture.height - 1);
 	color = texture.data[texture.width * tex_coord.y + tex_coord.x];
 	if (ray.side == 'W' || ray.side == 'E')
-		// color = (color >> 1) & 0x7F7F7F ;
 		color = (color & 0xFEFEFE) >> 1;
 	return (color);
 }
-// 8355711 wtf
 
 void	draw_wide_pixel(t_data d, int x, int y, unsigned int color)
 {
