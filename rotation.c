@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:12:18 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 20:22:22 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 21:51:13 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+Заполняем пол и потолок
+*/
 void	paint_window(t_data *d)
 {
 	unsigned int	*adr;
@@ -58,12 +61,15 @@ void	turn_right(t_data *d)
 
 int	mouse(int x, int y, t_data *d)
 {
+	(void) y;
+	// printf("mouse move min=%5d  max=%5d dir=%5d\n", d->mouse_minp, d->mouse_maxp, x);
 	if (x < d->mouse)
 		turn_left(d);
 	else if (x > d->mouse)
 		turn_right(d);
+	// if (x > d->mouse_maxp)
+	// 	d->mouse_maxp = d->mouse;
+	// if (x < d->mouse_minp)
 	d->mouse = x;
-	if (y)
-		return (0);
 	return (0);
 }

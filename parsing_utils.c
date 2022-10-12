@@ -6,12 +6,15 @@
 /*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 16:13:33 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/12 18:11:53 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+записывает пиксель в буфер d.img по координатам x, y
+*/
 void	image_pixel_put(t_data d, int x, int y, unsigned int color)
 {
 	int		*img_addr;
@@ -19,12 +22,12 @@ void	image_pixel_put(t_data d, int x, int y, unsigned int color)
 	int		size_line;
 	int		endian;
 
-	img_addr = (int *)mlx_get_data_addr(d.img, &bits_per_pixel, &size_line,
-			&endian);
 	if (x < 0 || x >= WINDOW_W)
 		return ;
 	if (y < 0 || y >= WINDOW_H)
 		return ;
+	img_addr = (int *)mlx_get_data_addr(d.img, &bits_per_pixel, &size_line,
+			&endian);
 	color = mlx_get_color_value(d.mlx, color);
 	img_addr[y * WINDOW_W + x] = color;
 }
@@ -76,6 +79,10 @@ int	get_x_y(char *str, t_data *d, int fd)
 	return (0);
 }
 
+/*
+Загружаем карту, 
+пропускаем строки d->skip-- до 1 строки карты
+*/
 void	get_map(t_data *d, char *filename)
 {
 	int		fd;

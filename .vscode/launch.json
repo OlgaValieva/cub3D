@@ -41,6 +41,18 @@
     //			"cwd": "${fileDirname}",
     //			"preLaunchTask": "make debug",
                 "MIMode": "lldb"
+            },
+            {
+                "name": "Debug cub3d broken_map",
+                "type": "lldb",
+                "request": "launch",
+                "program": "${workspaceFolder}/cub3d",
+                "args": ["./maps/broken_map.cub"],
+                "stopAtEntry": true,
+                "cwd": "${workspaceFolder}",
+    //			"cwd": "${fileDirname}",
+    //			"preLaunchTask": "make debug",
+                "MIMode": "lldb"
             }/*,
             {
                 "name": "Debug server",

@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:56:43 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 11:17:57 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 19:32:10 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+Проверяем внешние границы лабиринта по краям строки
+*/
 void	check_vertical(t_data *d, int y)
 {
 	int	x;
@@ -30,6 +33,9 @@ void	check_vertical(t_data *d, int y)
 		error_free("cub3d: map is not surrounded by walls from the east\n", d);
 }
 
+/*
+Проверяем внешние границы лабиринта
+*/
 void	check_walls(t_data *d, size_t x, size_t y)
 {
 	size_t	len;
@@ -46,7 +52,6 @@ void	check_walls(t_data *d, size_t x, size_t y)
 				error_free("isn't surrounded by walls from the north\n", d);
 			x++;
 		}
-		len = ft_strlen(d->map[y]);
 		while (y == d->size_y - 1 && x < len)
 		{
 			if (d->map[d->size_y - 1][x] && d->map[d->size_y - 1][x] != '1'
@@ -58,6 +63,9 @@ void	check_walls(t_data *d, size_t x, size_t y)
 	}
 }
 
+/*
+Инициализация положения персонажа
+*/
 void	save_player_data(t_data *d, char c, int x, int y)
 {
 	d->map[y][x] = '0';
@@ -73,6 +81,9 @@ void	save_player_data(t_data *d, char c, int x, int y)
 		d->view_angle = 270;
 }
 
+/*
+Проверка на допустимые символы карты и инициализация положения персонажа
+*/
 void	check_forbidden_char(t_data *d, size_t x, size_t y)
 {
 	int		player;
@@ -100,6 +111,9 @@ void	check_forbidden_char(t_data *d, size_t x, size_t y)
 		error_free("cub3d: wrong count of players\n", d);
 }
 
+/*
+проверка, что вокруг места на карте, внутри внешних границ, нет пустоты
+*/
 void	check_space(t_data *d, size_t x, size_t y)
 {
 	size_t	len;
