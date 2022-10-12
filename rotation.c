@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:12:18 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 21:51:13 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/13 01:27:39 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,18 @@ void	turn_right(t_data *d)
 	d->view_angle = add_angle(d->view_angle, SPEED_ROTATION);
 }
 
+	// printf("mouse move min=%5d  max=%5d dir=%5d\n", d->mouse_minp, d->mouse_maxp, x);
 int	mouse(int x, int y, t_data *d)
 {
 	(void) y;
-	// printf("mouse move min=%5d  max=%5d dir=%5d\n", d->mouse_minp, d->mouse_maxp, x);
-	if (x < d->mouse)
+	if (x < d->mouse || (x == d->mouse && d->mouse_delta < 0))
 		turn_left(d);
-	else if (x > d->mouse)
+	else if (x > d->mouse || (x == d->mouse && d->mouse_delta > 0))
 		turn_right(d);
-	// if (x > d->mouse_maxp)
-	// 	d->mouse_maxp = d->mouse;
-	// if (x < d->mouse_minp)
+	else
+		return (0);
+	if (x - d->mouse != 0)
+		d->mouse_delta = x - d->mouse;
 	d->mouse = x;
 	return (0);
 }

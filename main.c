@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:30:58 by carys             #+#    #+#             */
-/*   Updated: 2022/10/07 14:44:25 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/13 00:48:47 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	init_data(t_data *d)
 	d->f_color = -1;
 	d->c_color = -1;
 	d->mouse = WINDOW_W / 2;
+	d->mouse_delta = 0;
 	d->north_texture.filename = NULL;
 	d->south_texture.filename = NULL;
 	d->west_texture.filename = NULL;
