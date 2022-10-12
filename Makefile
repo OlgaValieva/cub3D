@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: carys <carys@student.42.fr>                +#+  +:+       +#+         #
+#    By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 10:42:54 by carys             #+#    #+#              #
-#    Updated: 2022/10/07 14:50:31 by carys            ###   ########.fr        #
+#    Updated: 2022/10/11 17:22:37 by cyetta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,23 +30,33 @@ CFLAGS	=	-Wall -Wextra -Werror -I${HEADER}
 
 MLX_FLAGS =	-Lmlx -lmlx -framework OpenGL -framework AppKit
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re debug mlx
+
+DPDS	= ${SRCS:.c=.d}
 
 all:		${NAME}
 
-%.o: 		%.c ${HEADER}
-			${CC} ${CFLAGS} -Imlx -c $< -o $@
+%.o: %.c
+			${CC} ${CFLAGS} ${DFLAG} -MMD -c $< -o $@  -Imlx
 
-${NAME}:	${OBJS} ${HEADER}
-			${CC} ${CFLAGS} ${MLX_FLAGS} -o ${NAME} ${OBJS}
+mlx:
+		${MAKE} -C mlx 
+
+include ${wildcard ${DPDS}}
+
+${NAME}:	mlx ${OBJS}
+			${CC} ${CFLAGS} ${DFLAG} ${MLX_FLAGS} -o ${NAME} ${OBJS}
 			@printf "${CLR}"START" $(NAME)""${RST}\n"
 
+debug:
+			${MAKE} DFLAG="-g3" ${NAME}
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${DPDS}
 
 fclean:		clean
+			${MAKE} -C mlx clean
 			${RM} ${NAME}
-			@printf "${CLR}"FINISH" $(NAME)""${RST}\n"
+			@printf "${CLR}"'Full cleanup '"$(NAME)""${RST}\n"
 
 re:			fclean all
 			@printf "${CLR}"REBOOT" $(NAME)""${RST}\n"

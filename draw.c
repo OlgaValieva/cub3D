@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 12:45:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/11 09:52:16 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/11 14:12:53 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	choose_text(t_texture *text, t_data d, t_ray ray)
 		(*text) = d.west_texture;
 }
 
+/*
+function for calculate color in texture
+*/
 unsigned int	color(t_texture texture, t_ray ray, int tex_pos)
 {
 	t_size			tex_coord;
@@ -37,9 +40,10 @@ unsigned int	color(t_texture texture, t_ray ray, int tex_pos)
 	tex_coord.y = tex_pos & (texture.height - 1);
 	color = texture.data[texture.width * tex_coord.y + tex_coord.x];
 	if (ray.side == 'W' || ray.side == 'E')
-		color = (color >> 1) & 8355711;// что за цифры
+		color = (color >> 1) & 8355711;
 	return (color);
 }
+// 8355711 wtf
 
 void	draw_wide_pixel(t_data d, int x, int y, unsigned int color)
 {
