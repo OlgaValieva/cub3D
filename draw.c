@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 12:45:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/11 14:12:53 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/12 13:15:19 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ unsigned int	color(t_texture texture, t_ray ray, int tex_pos)
 	tex_coord.y = tex_pos & (texture.height - 1);
 	color = texture.data[texture.width * tex_coord.y + tex_coord.x];
 	if (ray.side == 'W' || ray.side == 'E')
-		color = (color >> 1) & 8355711;
+		// color = (color >> 1) & 0x7F7F7F ;
+		color = (color & 0xFEFEFE) >> 1;
 	return (color);
 }
 // 8355711 wtf

@@ -1,4 +1,4 @@
-{
+
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
@@ -6,11 +6,11 @@
         "version": "0.2.0",
         "configurations": [
             {
-                "name": "Launch minishell ",
+                "name": "Launch cub3d ",
                 "type": "lldb",
                 "request": "launch",
                 "program": "${workspaceFolder}/cub3d",
-                "args": [],
+                "args": ["./maps/list.cub"],
                 "stopAtEntry": true,
                 "cwd": "${workspaceFolder}",
                 // "cwd": "${fileDirname}",
@@ -19,7 +19,7 @@
                 "MIMode": "lldb"
             },
             {
-                "name": "Debug minishell ",
+                "name": "Debug cub3d ",
                 "type": "lldb",
                 "request": "launch",
                 "program": "${workspaceFolder}/cub3d",
@@ -31,7 +31,7 @@
                 "MIMode": "lldb"
             },
             {
-                "name": "Debug minishell",
+                "name": "Debug cub3d",
                 "type": "lldb",
                 "request": "launch",
                 "program": "${workspaceFolder}/cub3d",

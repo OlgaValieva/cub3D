@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:54:41 by carys             #+#    #+#             */
-/*   Updated: 2022/10/10 12:17:38 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 13:00:11 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define FOV			60
 # define GFX_QUALITY    1.0
 # define MINIMAP_SIZE   0.2
-# define SPEED_MOVE		0.1
+# define SPEED_MOVE		0.24
 # define SPEED_ROTATION	2
 # define WALL_DIST		0.25
 # define WINDOW_W		1000
