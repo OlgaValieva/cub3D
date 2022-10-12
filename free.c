@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:13:39 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 21:00:19 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 11:18:11 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_texture(t_texture tex)
 void	error_free(char *str, t_data *d)
 {
 	all_free(d);
+	printf(COLOR"Error\n");
 	if (str)
 		ft_putstr_fd(str, 2);
 	exit(1);

@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/10 12:48:28 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 11:41:32 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,17 @@ void	get_map(t_data *d, char *filename)
 void	check_data(t_data *d)
 {
 	if (!d->map)
-		error_free("Cub3d: error: missing map!\n", d); // check
+		error_free("Cub3d: missing map!\n", d); // check
 	if (!d->north_texture.filename)
-		error_free("cub3d: error: missing north texture!\n", d);
+		error_free("cub3d: missing north texture\n", d);
 	if (!d->south_texture.filename)
-		error_free("cub3d: error: missing south texture!\n", d);
+		error_free("cub3d: missing south texture\n", d);
 	if (!d->west_texture.filename)
-		error_free("cub3d: error: missing west texture!\n", d);
+		error_free("cub3d: missing west texture\n", d);
 	if (!d->east_texture.filename)
-		error_free("cub3d: error: missing east texture!\n", d);
+		error_free("cub3d: missing east texture\n", d);
 	if (d->f_color == -1)
-		error_free("cub3d: error: missing floor color!\n", d);
+		error_free("cub3d: missing floor color\n", d);
 	if (d->c_color == -1)
-		error_free("cub3d: error: missing ceilling color!\n", d);
+		error_free("cub3d: missing ceilling color\n", d);
 }

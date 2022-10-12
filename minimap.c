@@ -6,7 +6,7 @@
 /*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:05:44 by carys             #+#    #+#             */
-/*   Updated: 2022/10/10 12:30:43 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/12 11:24:41 by carys            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,13 @@ void	draw_minimap(t_data d)
 void	ft_perror(char *str)
 {
 	perror(str);
+	printf(COLOR"Error\n");
 	exit(EXIT_FAILURE);
 }
 
 void	ft_error(char *str)
 {
+	printf(COLOR"Error\n");
 	if (str)
 		ft_putstr_fd(str, 2);
 	exit(1);
