@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: carys <carys@student.42.fr>                +#+  +:+       +#+         #
+#    By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 10:42:54 by carys             #+#    #+#              #
-#    Updated: 2022/10/12 12:57:04 by carys            ###   ########.fr        #
+#    Updated: 2022/10/13 13:18:24 by cyetta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	cub3d
+NAME	=	cub3D
 
 HEADER	=	cub3d.h
 
@@ -39,14 +39,16 @@ all:		${NAME}
 %.o: %.c
 			${CC} ${CFLAGS} ${DFLAG} -MMD -c $< -o $@  -Imlx
 
-mlx:
-		@${MAKE} -C mlx 
-
 include ${wildcard ${DPDS}}
 
-${NAME}:	mlx ${OBJS}
+${NAME}:	./mlx/libmlx.a ${OBJS}
 			${CC} ${CFLAGS} ${DFLAG} ${MLX_FLAGS} -o ${NAME} ${OBJS}
 			@printf "${CLR}"START" $(NAME)""${RST}\n"
+
+mlx:
+	@${MAKE} -C mlx 
+
+./mlx/libmlx.a: mlx
 
 debug:
 			${MAKE} DFLAG="-g3" ${NAME}

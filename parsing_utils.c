@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:03:47 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 18:11:53 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/13 14:30:34 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_newline(char *str, t_data *d, int *newline)
 		if ((*newline) == 1)
 		{
 			free(str);
-			ft_error("cub3d: empty line\n");
+			ft_error("cub3d: error of parameters\n");
 		}
 		else
 		{

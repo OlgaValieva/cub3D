@@ -6,18 +6,20 @@
 /*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:10:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 15:31:37 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/13 16:47:40 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_texture	parse_texture(char *line)
+t_texture	parse_texture(t_texture *tx, char *line)
 {
 	t_texture	texture;
 	char		*path;
 	int			len;
 
+	if (tx->filename)
+		ft_error("double key founded\n");
 	path = ft_strtrim(line, " ", 0, 0);
 	len = ft_strlen(line);
 	if (len < 5 || ft_strcmp(line + len - 4, ".xpm"))
@@ -54,13 +56,15 @@ int	check_number(char **str)
 	return (color);
 }
 
-int	parse_color(char *line)
+int	parse_color(int prev_color, char *line)
 {
 	int		color;
 	int		r;
 	int		g;
 	int		b;
 
+	if (prev_color > 0)
+		ft_error("double key founded\n");
 	r = check_number(&line);
 	g = check_number(&line);
 	b = check_number(&line);
@@ -78,17 +82,17 @@ static int	parse_line(char *line, t_data *data, int fd, int i)
 		return (data->skip);
 	}
 	if (line[i] == 'N' && line[i + 1] == 'O')
-		data->north_texture = parse_texture(line + i + 2);
+		data->north_texture = parse_texture(&data->north_texture, line + i + 2);
 	else if (line[i] == 'S' && line[i + 1] == 'O')
-		data->south_texture = parse_texture(line + i + 2);
+		data->south_texture = parse_texture(&data->south_texture, line + i + 2);
 	else if (line[i] == 'W' && line[i + 1] == 'E')
-		data->west_texture = parse_texture(line + i + 2);
+		data->west_texture = parse_texture(&data->west_texture, line + i + 2);
 	else if (line[i] == 'E' && line[i + 1] == 'A')
-		data->east_texture = parse_texture(line + i + 2);
+		data->east_texture = parse_texture(&data->east_texture, line + i + 2);
 	else if (line[i] == 'F')
-		data->f_color = parse_color(line + i + 1);
+		data->f_color = parse_color(data->f_color, line + i + 1);
 	else if (line[i] == 'C')
-		data->c_color = parse_color(line + i + 1);
+		data->c_color = parse_color(data->c_color, line + i + 1);
 	else
 		return (get_x_y(line, data, fd));
 	data->skip++;

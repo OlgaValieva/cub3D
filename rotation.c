@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:12:18 by carys             #+#    #+#             */
-/*   Updated: 2022/10/13 01:27:39 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/13 11:23:41 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	paint_window(t_data *d)
 	}
 }
 
+/*
+Добавлят к углу angle значение add по модулю 360градусов
+*/
 double	add_angle(double angle, double add)
 {
 	double	new_angle;
@@ -44,7 +47,7 @@ double	add_angle(double angle, double add)
 	new_angle = angle + add;
 	if (new_angle < 0.0)
 		new_angle += 360.0;
-	else if (new_angle > 360.0)
+	else if (new_angle >= 360.0)
 		new_angle -= 360.0;
 	return (new_angle);
 }
@@ -59,7 +62,6 @@ void	turn_right(t_data *d)
 	d->view_angle = add_angle(d->view_angle, SPEED_ROTATION);
 }
 
-	// printf("mouse move min=%5d  max=%5d dir=%5d\n", d->mouse_minp, d->mouse_maxp, x);
 int	mouse(int x, int y, t_data *d)
 {
 	(void) y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:05:44 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 11:24:41 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/13 13:28:52 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	draw_minimap(t_data d)
 
 void	ft_perror(char *str)
 {
-	perror(str);
 	printf(COLOR"Error\n");
+	perror(str);
 	exit(EXIT_FAILURE);
 }
 

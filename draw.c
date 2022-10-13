@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 12:45:15 by carys             #+#    #+#             */
-/*   Updated: 2022/10/12 13:55:29 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/13 22:10:16 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_wide_pixel(t_data d, int x, int y, unsigned int color)
 		image_pixel_put(d, x + idx, y, color);
 }
 
-void	wall(t_data d, t_ray ray, int ray_number)
+void	wall(t_data d, t_ray ray, int ray_number, double angle)
 {
 	t_texture		text;
 	int				draw_start;
@@ -62,6 +62,8 @@ void	wall(t_data d, t_ray ray, int ray_number)
 	double			tex_pos;
 
 	choose_text(&text, d, ray);
+	ray.distance = ray.distance * cos(convert_to_rad(add_angle(angle, \
+	-d.view_angle)));
 	draw_start = -(WINDOW_H / ray.distance) / 2 + WINDOW_H / 2.0;
 	if (draw_start < 0)
 		draw_start = 0;

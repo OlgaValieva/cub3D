@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carys <carys@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:11:16 by carys             #+#    #+#             */
-/*   Updated: 2022/10/04 20:22:18 by carys            ###   ########.fr       */
+/*   Updated: 2022/10/13 22:02:48 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+возвращает целочисленное значение координат персонажа
+*/
 t_coord	make_coord(t_data d)
 {
 	t_coord	coord;
@@ -21,6 +24,10 @@ t_coord	make_coord(t_data d)
 	return (coord);
 }
 
+/*
+Инициализация направления луча в соответствии с углом angle из координат
+персонажа
+*/
 void	init_ray(t_comp *comp, t_data d, double angle, t_coord *coord)
 {
 	comp->ray_dir_x = sin(convert_to_rad(angle));

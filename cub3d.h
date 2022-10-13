@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: cyetta <cyetta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:54:41 by carys             #+#    #+#             */
-/*   Updated: 2022/10/13 01:44:00 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/10/13 22:09:32 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "mlx/mlx.h"
 
 # define FOV			60
-# define GFX_QUALITY    1.0
-# define MINIMAP_SIZE   0.2
+# define GFX_QUALITY	1.0
+# define MINIMAP_SIZE	0.3
 # define SPEED_MOVE		0.24
 # define SPEED_ROTATION	2
 # define WALL_DIST		0.25
@@ -130,7 +130,7 @@ void	step_left(t_data *d);
 void	step_right(t_data *d);
 void	paint_window(t_data *d);
 void	draw_minimap(t_data d);
-void	wall(t_data data, t_ray ray, int x);
+void	wall(t_data data, t_ray ray, int x, double angle);
 void	draw_vertical(t_data data, int x, int width, int height);
 void	image_pixel_put(t_data data, int x, int y, unsigned int color);
 void	error_free(char *str, t_data *d);
